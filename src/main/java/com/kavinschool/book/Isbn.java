@@ -7,18 +7,18 @@ public class Isbn {
 	private static final int SHORT_ISBN_LENGTH = 10;
 	private static final int LONG_ISBN_LENGTH = 13;
 
-	public boolean checkISBN(String isbn) {
+	public boolean isIsbn(String isbn) {
 
 		if (isbn.length() == LONG_ISBN_LENGTH) {
-			return isThisAValidLongISBN(isbn);
+			return isLongIsbn(isbn);
 		}
 		else if (isbn.length() == SHORT_ISBN_LENGTH) {
-			return isThisAValidShortISBN(isbn);			
+			return isShortIsbn(isbn);
 		}
 		throw new NumberFormatException("ISBN numbers must be 10 or 13 digits long");
 	}
 
-	private boolean isThisAValidShortISBN(String isbn) {
+	private boolean isShortIsbn(String isbn) {
 		int total = 0;
 
 		for (int i = 0; i < SHORT_ISBN_LENGTH; i++)
@@ -39,7 +39,7 @@ public class Isbn {
 		return (total % SHORT_ISBN_MULTIPLIER == 0);
 	}
 
-	private boolean isThisAValidLongISBN(String isbn) {
+	private boolean isLongIsbn(String isbn) {
 		int total = 0;
 		
 		for (int i = 0; i < LONG_ISBN_LENGTH; i++) {
